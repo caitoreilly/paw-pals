@@ -1,0 +1,28 @@
+{
+  "name": "paw-pals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caitoreilly/paw-pals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caitoreilly/paw-pals/issues"
+  },
+  "homepage": "https://github.com/caitoreilly/paw-pals#readme",
+  "dependencies": {
+    "connect-session-sequelize": "^7.1.5",
+    "dayjs": "^1.11.6",
+    "dotenv": "^16.0.3",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "sequelize": "^6.25.3",
+    "sqlite3": "^5.1.2"
+  }
+}
