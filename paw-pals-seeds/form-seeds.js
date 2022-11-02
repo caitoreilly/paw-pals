@@ -42,6 +42,6 @@ const formData = [
   },
 ];
 
-const seedForm = () => Product.bulkCreate(formData);
+const seedForm = () => form.bulkCreate(formData);
 
 module.exports = seedForm;
