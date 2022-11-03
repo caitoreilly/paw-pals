@@ -44,16 +44,28 @@ form.init(
       userAge:  {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          max: 100,
+          min: 1
+        }
       },
       // 5 NYC borough
       userBorough: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isUooercase: true,
+          isIn: [['QUEENS', 'MANHATTAN', 'BROOKLYN', 'STATEN ISLAND', 'BRONX']]
+        }
       },
-      // morning, afternoon, evening
+      // morning, afternoon, evening, anytime
       userAvailable: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isUppercase: true,
+          isIn: [['MORNING', 'AFTERNOON', 'EVENING', 'ANYTIME']]
+        }
       },
       // string
       dogName: {
@@ -63,17 +75,36 @@ form.init(
       // Breed Choices ( no open ended other, just easy last choice 'other')
       dogBreed: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isUppercase: true,
+          isIn: [[
+            'BULLDOG',
+            'GERMAN SHEPHERD',
+            'POODLE',
+            'FRENCH BULLDOG',
+            'GOLDEN RETRIEVER',
+            'OTHER'
+          ]]
+        }
       },
       // integer number
       dogAge: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          max: 40,
+          min: 0
+        }
       },
       // walk, run, frisbee, ball
       dogActivity: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isUppercase: true,
+          isIn: [['WALK', 'FRISBEE', 'BALL', 'RUN', 'OTHER']]
+        }
       },
     },
     {

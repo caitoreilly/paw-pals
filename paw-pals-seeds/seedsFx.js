@@ -2,7 +2,6 @@ const seedForm = require('./form-seeds');
 const seedPost = require('./post-seeds');
 const seedComments = require('./comment-seeds');
 
-
 //!!!!!
 // TO DO: SQ CONNECTION LOCATION
 const sequelize = require('');
