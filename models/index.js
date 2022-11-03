@@ -1,4 +1,4 @@
-// Importing our 3 models
+// Importing our 3 models MAYBE JUST TWO IF WE ARENT DOING COMMENTS
 
 // !!!!!!!
 //TO DO: Add specific locations when finalized folder (if changes from what i pushed)
