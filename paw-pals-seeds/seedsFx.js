@@ -1,26 +1,24 @@
-const seedCategories = require('./');
-const seedProducts = require('./');
-const seedTags = require('./');
-const seedProductTags = require('./');
+const seedForm = require('./form-seeds');
+const seedPost = require('./post-seeds');
+const seedComments = require('./comment-seeds');
 
 
 //!!!!!
-// TO DO: CONNECTION LOCATION
-//!!!!
-
+// TO DO: SQ CONNECTION LOCATION
 const sequelize = require('');
+//!!!!
 
 const seedDb = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
 
-  await seedCategories();
+  await seedForm();
   console.log('\n-- Form Database Seeded --\n');
 
-  await seedProducts();
+  await seedPost();
   console.log('\n-- Post Database Seeded --\n');
 
-  await seedTags();
+  await seedComments();
   console.log('\n-- Comment Database Seeded --\n');
 
   process.exit(0);
