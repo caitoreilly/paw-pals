@@ -1,0 +1,9 @@
+<!-- for loop & reference dog-details to render dog data for each borough-->
+<section class="container">
+    <h3 class="borough-name">{{borough.name}}</h3>
+    <section>
+        {{each borough.dogs as |dog|}}
+        {{> dog-details}}
+        {{/each}}
+    </section>
+</section>
