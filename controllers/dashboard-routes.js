@@ -25,8 +25,8 @@ router.get('/', authorize, (req, res) => {
       include: [
         {
           // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          model: Rating,
+          attributes: ['ratingId', 'rating'],
           include: {
             model: User,
             attributes: ['userName']
@@ -64,8 +64,8 @@ router.get('/edit/:id', authorize, (req, res) => {
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Rating,
+        attributes: ['ratingId', 'rating'],
         include: {
           model: User,
           attributes: ['userName']
