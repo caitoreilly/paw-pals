@@ -1,0 +1,211 @@
+header nav {
+    margin: 15px 0;
+    color: white;
+    background-color: #ff862f;
+    font-family: Arial, Helvetica, sans-serif;
+    float: right;
+  }
+  
+  header nav ul li {
+    display: inline;
+    padding: 15px;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  
+  header a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .dogbone {
+    width: 70%;
+    margin-left: 150px;
+  }
+  
+  .title {
+    color: white;
+    font-size: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+  }
+  
+  .sign-up-prompt {
+    color: #ff862f;
+    border-radius: 10px;
+    font-size: 35px;
+    padding: 5px 20px 10px 20px;
+    background-color: white;
+    margin-left: 80px;
+    margin-right: 900px;
+  }
+  
+  .mae {
+    margin-top: 2px;
+  }
+  
+  .maepic {
+    float: right;
+    border-radius: 90%;
+    padding: 20px;
+  }
+  
+  section {
+    padding: 40px;
+  }
+  
+  .section-title {
+    font-size: 2vw;
+    text-align: center;
+    color: black;
+  }
+  
+  .welcome {
+    height: 300px;
+    background-color: #ff862f;
+  }
+  
+  .sign-up section {
+    height: 400px;
+    background-color: white;
+  }
+  
+  .section-title {
+    font-size: 35px;
+  }
+  
+  .pup {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .signup-form {
+    border: 3px solid black;
+    background-color: #fbffa5;
+    color: black;
+    padding: 20px;
+    width: 450px;
+    margin: auto;
+  }
+  
+  .signup-form button {
+    font-size: 20px;
+    background-color: #ff862f;
+    margin-left: 165px;
+    border: none;
+    padding: 10px;
+  }
+  
+  .form-header {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .orangepaw {
+    margin-left: 530px;
+    margin-top: 2px;
+    padding-bottom: 10px;
+  }
+  
+  .yellowpaw {
+    margin-left: 530px;
+    margin-top: 2px;
+    padding-bottom: 10px;
+  }
+  
+  .about-us {
+    height: 400px;
+    background-color: #ff862f;
+  }
+  
+  .sign-up-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .about-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .contact-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .contact-us {
+    height: 300px;
+    background-color: white;
+  }
+  
+  .contact-info {
+    text-align: center;
+    color: #ff862f;
+  }
+  
+  footer {
+    background: #fbffa5;
+    padding: 20px;
+  }
+  
+  footer h2 {
+    display: inline;
+    color: #ff862f;
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  footer div {
+    line-height: 1.5;
+    text-align: left;
+    margin-left: 50px;
+  }
+  
+  .card {
+  
+  }
+  
+  .container {
+  
+  }
+  
+  .borough-name{
+  
+  }
+  
+  .card-body{
+  
+  }
+  
+  .login-card{
+  
+  }
+  
+  .page-title{
+  
+  }
+  
+  .login-form{
+  
+  }
+  
+  .form-group{
+  
+  }
+  
+  
+  .form-input{
+  
+  }
+  
+  .btn btn-primary{
+  
+  }
+  
+  
