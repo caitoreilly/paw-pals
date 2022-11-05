@@ -1,7 +1,7 @@
 // New Post Form Handler
 async function newFormHandler(event) {
     event.preventDefault();
-    // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
+    // Will defer to Caitlyn's naming conventions for query selectors for adding post handlebars, if applicable
     const postTitle = document.querySelector('input[name="post-title"]').value;
     const postDescription = document.querySelector('input[name="post-text"]').value;
     const postLocation = document.querySelector('input[name="post-loc"]').value;
@@ -27,5 +27,6 @@ async function newFormHandler(event) {
     }
   }
 
+  // Will defer to Caitlyn's naming conventions for query selectors for adding post handlebars, if applicable
   // Event Listener for the new post submit button
   document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

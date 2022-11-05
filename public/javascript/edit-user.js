@@ -1,9 +1,9 @@
 // A function to edit a post
 async function editFormHandler(event) {
     event.preventDefault();
-  // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
+    // Will defer to Caitlyn's naming conventions for query selectors for updating user handlebars, if applicable
     // Username
-    let username = document.querySelector('input[name="user-name"]').value.trim();
+    let username = document.querySelector('input[name="username"]').value.trim();
     if(username.length) username = '"username": "' + username + '"';
     // Email
     let userEmail = document.querySelector('input[name="email"]').value.trim();
@@ -27,9 +27,9 @@ async function editFormHandler(event) {
     if(userAge.isInteger) userAge = '"user age": "' + userAge + '"';
 
     // CHOICE QUERIES
-    let userBorough = document.querySelector('input[name="user-borough"]:checked').value;
-    let userAvailable = document.querySelector('input[name="user-available"]:checked').value;
-    let dogBreed = document.querySelector('input[name="dog-breed"]:checked').value;
+    let userBorough = document.querySelector('input[name="borough"]:checked').value;
+    let userAvailable = document.querySelector('input[name="availability"]:checked').value;
+    let dogBreed = document.querySelector('input[name="breed"]:checked').value;
     let dogActivity = document.querySelector('input[name="dog-activity"]:checked').value;
     const ID = document.querySelector('input[name="user-id"]').value;
 
@@ -50,5 +50,5 @@ async function editFormHandler(event) {
         alert(response.statusText);
         }
   }
-  // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
+  // Will defer to Caitlyn's naming conventions for query selectors for updating user handlebars, if applicable
   document.querySelector('.edit-user-form').addEventListener('submit', editFormHandler);

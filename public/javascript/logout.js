@@ -11,5 +11,4 @@ async function logout() {
       alert(response.statusText);
     }
   }
-  // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
   document.querySelector('#logout').addEventListener('click', logout);

@@ -4,13 +4,13 @@ async function editFormHandler(event) {
     const postID = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
- // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
+ // Will defer to Caitlyn's naming conventions for query selectors for updating post handlebars, if applicable
     const postTitle = document.querySelector('input[name="post-title"]').value;
     const postDescription = document.querySelector('input[name="post-text"]').value;
     const postLocation = document.querySelector('input[name="post-loc"]').value;
     const postAvailable = document.querySelector('input[name="post-available"]').value;
 
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/posts/${postID}`, {
         method: 'PUT',
         body: JSON.stringify({
           postTitle,
@@ -29,5 +29,5 @@ async function editFormHandler(event) {
         }
 
   }
-  // WILL DEFER TO CAITLIN'S HANDLEBAR NAMING CONVENTION FOR querySelectors
+  // Will defer to Caitlyn's naming conventions for query selectors for updating post handlebars, if applicable
   document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);

@@ -1,4 +1,5 @@
 // A function to delete a post
+// TEAM: DO WE NEED THIS?
 async function deleteFormHandler(event) {
     event.preventDefault();
 
