@@ -29,6 +29,7 @@ body {
 
 .intro {
   text-align: center;
+  margin-top: -20px;
 }
 
 .sign-up-prompt {
@@ -62,7 +63,7 @@ section {
 }
 
 .welcome {
-  height: 300px;
+  height: 250px;
   background-color: #ff862f;
   display: flex;
 }
@@ -187,18 +188,16 @@ footer div {
 .card-body {
 }
 
-.page-title {
-}
-
-.login-card {
-  border: 3px #ff862f;
-}
-
 .login-form {
+  border: 3px solid black;
+  background-color: #fbffa5;
+  padding: 5px;
+  margin-left: 400px;
+  margin-right: 400px;
+  text-align: center;
 }
 
-.form-group {
+.no-login {
+  text-align: center;
 }
 
-.form-input {
-}
