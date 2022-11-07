@@ -3,26 +3,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paw Pals</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/sign-up">Sign Up</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
-      </nav>
+      <!-- section with name of company, sign up prompt, and picture of Mae-->
+      <section class="welcome">
+          <div class="intro">
+            <img src="./assets/dogbone.png" height="75px" />
+            <h1 class="title">Paw Pals</h1>
+            {{!-- <h1 class="sign-up-prompt"><a href="#sign-up">Sign Up!</a></h1> --}}
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#sign-up">Sign Up</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </section>
+
     </header>
     <main>
+
       {{{body}}}
     </main>
     <footer>
-      <h2>🐕 Made with love by Paw Pals.</h2>
+      <h2>🐕 Made with love by Paw Pals</h2>
       <div>
         &copy; 2022 Paw Pals, Inc.
       </div>

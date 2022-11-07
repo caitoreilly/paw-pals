@@ -19,6 +19,4 @@ const loginFormHandler = async (event) => {
   }
 };
 
-//***add code here to include sign-up button that directs the user back to the homepage!
-
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
