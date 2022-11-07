@@ -13,6 +13,10 @@ header nav ul li {
   font-size: 1.5rem;
 }
 
+header nav ul li a:hover {
+  color: #fbffa5;
+}
+
 header a {
   color: white;
   text-decoration: none;
@@ -43,13 +47,7 @@ body {
 }
 
 .mae {
-  margin-top: 2px;
-}
-
-.maepic {
-  float: right;
-  border-radius: 90%;
-  padding: 20px;
+  border-radius: 55%;
 }
 
 section {
@@ -201,3 +199,8 @@ footer div {
   text-align: center;
 }
 
+.submit-btn {
+  border: none;
+  background-color: #ff862f;
+  color: white;
+}
