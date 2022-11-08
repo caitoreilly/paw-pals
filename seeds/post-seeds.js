@@ -1,4 +1,4 @@
-const { post } = require('./');
+const { post } = require('../models');
 
 const postData = [
   {
@@ -11,7 +11,7 @@ const postData = [
   {
     postTitle: 'post2',
     postDescription: 'post description 2',
-    postLocation: 'burough1',
+    postLocation: 'MANHATTAN',
     postAvailable: 'AFTERNOON',
     postDog: 'name2',
   },

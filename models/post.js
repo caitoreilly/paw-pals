@@ -1,9 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-
-// !!!!!!!
-//TO DO: insert the location for the connection
-// !!!!!!!
-const sequelize = require('/'); 
+const sequelize = require('../config/connection'); 
 
 // create our Dog-Post model
 class post extends Model {}
@@ -28,30 +24,31 @@ post.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      // NYC borough -> ref. form borough
-      postLocation: {
-        type: DataTypes.STRING,
-        references: {
-          model: 'form',
-          key: 'userBorough'
-        }
-      },
+      // NYC borough -> ref. user borough
+     // postLocation: {
+       // type: DataTypes.STRING,
+       // references: {
+       //   model: 'user',
+        //  key: 'userBorough'
+       // }
+      //},
       // morn,aft,eve -> ref. form available
-      postAvailable: {
-        type: DataTypes.String,
-        references: {
-          model: 'form',
-          key: 'userAvailable'
-        } 
-      },
+     // postAvailable: {
+      //  type: DataTypes.STRING,
+        //references: {
+        //  model: 'user',
+        //  key: 'userAvailable'
+      //  } 
+     // },
       // posted by what user -> ref. form name
-      postDog: {
-        type: DataTypes.STRING,
-        references: {
-          model: 'form',
-          key: 'name'
-        }
-      }
+     // postDog: {
+       // type: DataTypes.STRING,
+       // allowNull: false,
+       // references: {
+        //  model: 'user',
+        //  key: 'name'
+       // }
+     // }
     },
     {
       sequelize,
@@ -60,3 +57,6 @@ post.init(
       modelName: 'post'
     }
   );
+
+// Export the model
+module.exports = post;

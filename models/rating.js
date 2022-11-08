@@ -1,12 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
-
-const sequelize = require('/');
+const sequelize = require('../config/connection'); 
 
 // create our comment model
-class Rating extends Model {}
+class rating extends Model {}
 
 // Post Information
-Rating.init(
+rating.init(
     // auto
     {
       ratingID: {
@@ -28,3 +27,6 @@ Rating.init(
       modelName: 'rating'
     }
   );
+
+  // Export the model
+  module.exports = rating;

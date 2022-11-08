@@ -1,8 +1,8 @@
 // Dependencies
 // Express.js connection
 const router = require('express').Router();
-// User Model, Post Model, and Comment Model
-const { User, Post, Comment } = require('../../models');
+// User Model, Post Model, and Rating Model
+const { User, Post, Rating } = require('../../models');
 // Sequelize database connection
 const sequelize = require('../../config/connection');
 // Authorization
@@ -25,17 +25,17 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['userName']
             },
             {
-                model: Comment,
-                // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
+              model: Rating,
+              // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
+              attributes: ['ratingID', 'rating', 'created_at'],
+              include: {
+                  model: Post,
+                  attributes: ['title']
+              }
+          }
         ]
     })
     .then(postData => res.json(postData))
@@ -65,14 +65,14 @@ router.get('/:id', (req, res) => {
           attributes: ['userName']
         },
         {
-          // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            include: {
-                model: User,
-                attributes: ['userName']
-            }
-        }
+          model: Rating,
+          // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
+          attributes: ['ratingID', 'rating', 'created_at'],
+          include: {
+              model: Post,
+              attributes: ['title']
+          }
+      }
       ]
     })
       .then(postData => {

@@ -1,11 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('/'); //insert the location for the connection
+const sequelize = require('../config/connection'); //insert the location for the connection
+// Requires bcrypt for password hashing
+const bcrypt = require('bcrypt');
 
 // create our USER & DOG model
-class form extends Model {}
+class user extends Model {}
 
 // USER AND DOG Information
-form.init(
+user.init(
     // auto
     {
       ID: {
@@ -17,12 +19,12 @@ form.init(
       // Username
       username: {
         type: DataTypes.STRING,
-        allowNull: False
+        allowNull: false
       },
       // Password
       password: {
         type: DataTypes.STRING,
-        allowNull: False,
+        allowNull: false,
         validate: {
             len: [8]
         }
@@ -30,12 +32,12 @@ form.init(
       // Name
       name: {
         type: DataTypes.STRING,
-        allowNull: False
+        allowNull: false
       },
       // Email
       userEmail: {
         type: DataTypes.STRING,
-        allowNull: False,
+        allowNull: false,
         validate: {
             isEmail: true
         }
@@ -54,7 +56,7 @@ form.init(
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isUooercase: true,
+          isUppercase: true,
           isIn: [['QUEENS', 'MANHATTAN', 'BROOKLYN', 'STATEN ISLAND', 'BRONX']]
         }
       },
@@ -108,9 +110,22 @@ form.init(
       },
     },
     {
+      // Hooks for password hashing
+      hooks: {
+          async beforeCreate(userData) {
+              userData.password = await bcrypt.hash(userData.password, 10);
+              return userData;
+            },
+          async beforeUpdate(updatedData) {
+              updatedData.password = await bcrypt.hash(updatedData.password, 10);
+              return updatedData;
+            }
+      },
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'form'
+      modelName: 'user'
     }
-  );
+  )
+  // Export the model
+  module.exports = user;

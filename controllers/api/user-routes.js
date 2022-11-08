@@ -2,7 +2,7 @@
 // Express.js connection
 const router = require('express').Router();
 // User, Post, Vote models
-const { User, Post, Comment } = require('../../models');
+const { User, Post, Rating } = require('../../models');
 // Authorization Helper
 const authorize = require('../../utils/authorization');
 
@@ -29,12 +29,12 @@ router.get('/:id', (req, res) => {
       include: [
         {
           model: Post,
-          attributes: ['id', 'title', 'postDescription', 'postDateCreated']
+          attributes: ['postID', 'postTitle', 'postDescription', 'postDateCreated']
         },
         {
-            model: Comment,
-            // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            model: Rating,
+            // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
+            attributes: ['ratingID', 'rating', 'created_at'],
             include: {
                 model: Post,
                 attributes: ['title']

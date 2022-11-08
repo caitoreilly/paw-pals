@@ -1,6 +1,6 @@
-const { form } = require('../models');
+const { user } = require('../models');
 
-const formData = [
+const userData = [
   {
     username: 'user1',
     password: 'password1',
@@ -42,6 +42,6 @@ const formData = [
   },
 ];
 
-const seedForm = () => form.bulkCreate(formData);
+const seedUsers = () => user.bulkCreate(userData, {induvidualHooks: true});
 
-module.exports = seedForm;
+module.exports = seedUsers;
