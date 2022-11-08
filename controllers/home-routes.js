@@ -17,14 +17,14 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: user,
-                attributes: ['userName']
+                attributes: ['username']
             },
             {
                 model: rating,
                 attributes: ['ratingID', 'rating'],
                 include: {
                     model: user,
-                    attributes: ['userName']
+                    attributes: ['username']
                 }
             }
         ]
@@ -43,27 +43,26 @@ router.get('/', (req, res) => {
 });
 
 // Get a specific post
-router.get('/post/:id', (req, res) => {
+router.get('/post/:ID', (req, res) => {
     Post.findOne({
       where: {
-        id: req.params.id
+        postID: req.params.postID
       },
       attributes: [
-        'postID',
         'postTitle',
         'postDescription',
       ],
       include: [
         {
           model: user,
-          attributes: ['userName']
+          attributes: ['username']
         },
         {
             model: rating,
             attributes: ['ratingID', 'rating'],
             include: {
                 model: user,
-                attributes: ['userName']
+                attributes: ['username']
             }
         }
       ]

@@ -12,7 +12,7 @@ const authorize = require('../utils/auth')
 router.get('/', authorize, (req, res) => {
     post.findAll({
       where: {
-        postDog: req.session.postDog
+        ID: req.session.ID
       },
       attributes: [
         'postID',
@@ -26,12 +26,12 @@ router.get('/', authorize, (req, res) => {
           attributes: ['ratingID', 'rating'],
           include: {
             model: user,
-            attributes: ['userName']
+            attributes: ['username']
           }
         },
         {
           model: user,
-          attributes: ['userName']
+          attributes: ['username']
         }
       ]
     })
@@ -62,12 +62,12 @@ router.get('/edit/:id', authorize, (req, res) => {
         attributes: ['ratingID', 'rating'],
         include: {
           model: user,
-          attributes: ['userName']
+          attributes: ['username']
         }
       },
       {
         model: user,
-        attributes: ['userName']
+        attributes: ['username']
       }
     ]
   })
