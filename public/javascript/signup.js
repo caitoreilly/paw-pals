@@ -1,18 +1,18 @@
 // Sign up form handler
 async function signupFormHandler(event) {
     event.preventDefault();
-    const username = document.querySelector('#username-signup').value.trim();
-    const userEmail = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-    const dogName = document.querySelector('input[name="dog-name"]').value.trim();
-    const dogAge = document.querySelector('input[name="dog-age"]').value;
-    const userAge = document.querySelector('input[name="user-age"]').value;
-    const userBorough = document.querySelector('input[name="borough"]:checked').value;
-    const userAvailable = document.querySelector('input[name="availability"]:checked').value;
-    const dogBreed = document.querySelector('input[name="breed"]:checked').value;
-    const dogActivity = document.querySelector('input[name="activity"]:checked').value;
+    const username = document.querySelector('input[name="username"]').value.trim();
+    const userEmail = document.querySelector('input[name="email"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value.trim();
+    const dogName = document.querySelector('input[name="name"]').value.trim();
+    const dogAge = document.querySelector('input[name="age"]').value;
+    const userBorough = document.querySelector('input[name="borough"]').value;
+    const userAvailable = document.querySelector('input[name="availability"]').value;
+    const dogBreed = document.querySelector('input[name="breed"]').value;
+    const dogActivity = document.querySelector('input[name="activity"]').value;
 
-    if (username && email && password) {
+    if (username && userEmail && password) {
+        console.log("okay!");
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
@@ -21,7 +21,6 @@ async function signupFormHandler(event) {
                 password,
                 dogName,
                 dogAge,
-                userAge,
                 userBorough,
                 userAvailable,
                 dogBreed,

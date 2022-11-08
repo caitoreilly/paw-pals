@@ -4,7 +4,12 @@ const sequelize = require('../config/connection'); //insert the location for the
 const bcrypt = require('bcrypt');
 
 // create our USER & DOG model
-class user extends Model {}
+class user extends Model {
+    // Method to check for password instance in db
+    checkPassword(logPass) {
+        return bcrypt.compareSync(logPass, this.password);
+    }
+}
 
 // USER AND DOG Information
 user.init(
@@ -30,7 +35,7 @@ user.init(
         }
       },
       // Name
-      name: {
+      dogName: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -43,14 +48,14 @@ user.init(
         }
       },
       // Age
-      userAge:  {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          max: 100,
-          min: 1
-        }
-      },
+      //userAge:  {
+        //type: DataTypes.INTEGER,
+       // allowNull: false,
+        //validate: {
+         // max: 100,
+          //min: 1
+       // }
+      //},
       // 5 NYC borough
       userBorough: {
         type: DataTypes.STRING,

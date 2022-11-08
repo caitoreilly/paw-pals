@@ -20,11 +20,11 @@ router.get('/', (req, res) => {
   });
 
 // GET user by id
-router.get('/:id', (req, res) => {
+router.get('/:ID', (req, res) => {
     user.findOne({
       attributes: { exclude: ['password'] },
       where: {
-        id: req.params.id
+        ID: req.params.ID
       },
       include: [
         {
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
             model: rating,
             attributes: ['ratingID', 'rating', 'created_at'],
             include: {
-                model: Post,
+                model: post,
                 attributes: ['title']
             }
         }
@@ -57,9 +57,15 @@ router.get('/:id', (req, res) => {
 // Add a new user
 router.post('/', (req, res) => {
   user.create({
-    userName: req.body.userName,
+    username: req.body.username,
     userEmail: req.body.userEmail,
-    userPassword: req.body.userPassword
+    password: req.body.password,
+    dogName: req.body.dogName,
+    dogAge: req.body.dogAge,
+    userBorough: req.body.userBorough,
+    userAvailable: req.body.userAvailable,
+    dogBreed: req.body.dogBreed,
+    dogActivity: req.body.dogActivity
   })
     .then(userData => {
         res.json(userData);
@@ -74,20 +80,25 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     user.findOne({
         where: {
-        email: req.body.userEmail
+        userEmail: req.body.userEmail
         }
     }).then(userData => {
         if (!userData) {
         res.status(400).json({ message: 'Email address not found.' });
         return;
         }
-        const validPassword = userData.checkPassword(req.body.userPassword);
+        const validPassword = userData.checkPassword(req.body.password);
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
         }
+        req.session.save(() => {
+          req.session.ID = userData.ID;
+          req.session.userName = userData.userName;
+          req.session.loggedIn = true;
           res.json({ user: userData, message: 'Log in sucessful!' });
     });  
+});
 });
 
 // Log out an existing user
@@ -102,11 +113,11 @@ router.post('/logout', authorize, (req, res) => {
 })
 
 // Update an existing user
-router.put('/:id', authorize, (req, res) => {
+router.put('/:ID', authorize, (req, res) => {
     user.update(req.body, {
         individualHooks: true,
         where: {
-            id: req.params.id
+            ID: req.params.ID
         }
     })
       .then(userData => {
@@ -123,10 +134,10 @@ router.put('/:id', authorize, (req, res) => {
   })
 
 // Delete an existing user
-router.delete('/:id', authorize, (req, res) => {
+router.delete('/:ID', authorize, (req, res) => {
     user.destroy({
       where: {
-        id: req.params.id
+        ID: req.params.ID
       }
     })
       .then(userData => {
