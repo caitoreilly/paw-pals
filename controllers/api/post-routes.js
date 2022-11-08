@@ -2,37 +2,34 @@
 // Express.js connection
 const router = require('express').Router();
 // User Model, Post Model, and Rating Model
-const { User, Post, Rating } = require('../../models');
+const { user, post, rating } = require('../../models');
 // Sequelize database connection
 const sequelize = require('../../config/connection');
 // Authorization
-const authorize = require('../../utils/authorization');
+const authorize = require('../../utils/auth');
 
 // Routes
 
 // Get all posts
 router.get('/', (req, res) => {
-    Post.findAll({
+    post.findAll({
         attributes: [
-          'id',
+          'postID',
           'postTitle',
-          'postDateCreated',
-          'postLocation',
-          'postAvailable',
-          'postDog',
+          'postDescription',
           ],
         order: [[ 'created_at', 'DESC']],
         include: [
             {
-                model: User,
+                model: user,
                 attributes: ['userName']
             },
             {
-              model: Rating,
+              model: rating,
               // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
               attributes: ['ratingID', 'rating', 'created_at'],
               include: {
-                  model: Post,
+                  model: post,
                   attributes: ['title']
               }
           }
@@ -47,29 +44,26 @@ router.get('/', (req, res) => {
 
 // Get post by id
 router.get('/:id', (req, res) => {
-    Post.findOne({
+    post.findOne({
       where: {
         id: req.params.id
       },
       attributes: [
-        'id',
+        'postID',
         'postTitle',
-        'postDateCreated',
-        'postLocation',
-        'postAvailable',
-        'postDog',
+        'postDescription',
       ],
       include: [
         {
-          model: User,
+          model: user,
           attributes: ['userName']
         },
         {
-          model: Rating,
+          model: rating,
           // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
           attributes: ['ratingID', 'rating', 'created_at'],
           include: {
-              model: Post,
+              model: post,
               attributes: ['title']
           }
       }
@@ -90,7 +84,7 @@ router.get('/:id', (req, res) => {
 
 // Create a new post
 router.post('/', authorize, (req, res) => {
-    Post.create({
+    post.create({
         postTitle: req.body.postTitle,
         postDescription: req.body.postDescription,
         postDog: req.postDog
@@ -104,7 +98,7 @@ router.post('/', authorize, (req, res) => {
 
 // Update a post
 router.put('/:id', authorize, (req, res) => {
-    Post.update(req.body,
+    post.update(req.body,
         {
             where: {
                 id: req.params.id
@@ -126,7 +120,7 @@ router.put('/:id', authorize, (req, res) => {
 
 // Delete a post
 router.delete('/:id', authorize, (req, res) => {
-    Post.destroy({
+    post.destroy({
       where: {
         id: req.params.id
       }

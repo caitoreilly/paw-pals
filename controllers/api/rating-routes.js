@@ -2,15 +2,15 @@
 // Express.js connection
 const router = require('express').Router();
 // Comment model
-const { Rating } = require('../../models');
+const { rating } = require('../../models');
 // Authorization Helper
-const authorize = require('../../utils/authorization');
+const authorize = require('../../utils/auth');
 
 // Routes
 
 // Get ratings
 router.get('/', (req, res) => {
-    Rating.findAll()
+    rating.findAll()
       .then(ratingData => res.json(ratingData))
       .catch(err => {
         console.log(err);
@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 
 // Post a new rating
 router.post('/', authorize, (req, res) => {
-    Rating.create({
-      rating_id: req.body.ratingId,
+    rating.create({
+      rating_id: req.body.ratingID,
       rating: req.body.rating,
     })
       .then(ratingData => res.json(ratingData))

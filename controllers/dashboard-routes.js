@@ -4,43 +4,40 @@ const router = require('express').Router();
 // Requires sequelize
 const sequelize = require('../config/connection');
 // Requires models
-const { Post, User, Rating } = require('../models');
+const { post, user, rating } = require('../models');
 // Requires authorization
 const authorize = require('../utils/auth')
 
 // Renders dashboard page
 router.get('/', authorize, (req, res) => {
-    Post.findAll({
+    post.findAll({
       where: {
         postDog: req.session.postDog
       },
       attributes: [
-        'id',
+        'postID',
         'postTitle',
-        'postDateCreated',
-        'postLocation',
-        'postAvailable',
-        'postDog',
+        'postDescription',
       ],
       include: [
         {
           // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
-          model: Rating,
-          attributes: ['ratingId', 'rating'],
+          model: rating,
+          attributes: ['ratingID', 'rating'],
           include: {
-            model: User,
+            model: user,
             attributes: ['userName']
           }
         },
         {
-          model: User,
+          model: user,
           attributes: ['userName']
         }
       ]
     })
       .then(postData => {
-        const posts = postData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        const dashboardPosts = postData.map(post => post.get({ plain: true }));
+        res.render('dashboard', { dashboardPosts, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -50,29 +47,26 @@ router.get('/', authorize, (req, res) => {
 
 // Edit posts
 router.get('/edit/:id', authorize, (req, res) => {
-  Post.findOne({
+  post.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
-      'id',
+      'postID',
       'postTitle',
-      'postDateCreated',
-      'postLocation',
-      'postAvailable',
-      'postDog',
+      'postDescription',
     ],
     include: [
       {
-        model: Rating,
-        attributes: ['ratingId', 'rating'],
+        model: rating,
+        attributes: ['ratingID', 'rating'],
         include: {
-          model: User,
+          model: user,
           attributes: ['userName']
         }
       },
       {
-        model: User,
+        model: user,
         attributes: ['userName']
       }
     ]
@@ -82,8 +76,8 @@ router.get('/edit/:id', authorize, (req, res) => {
         res.status(404).json({ message: 'No post found with an id of ' + id });
         return;
       }
-      const post = postData.get({ plain: true });
-      res.render('edit-post', { post, loggedIn: true });
+      const editPost = postData.get({ plain: true });
+      res.render('edit-post', { editPost, loggedIn: true });
     })
     .catch(err => {
       console.log(err);

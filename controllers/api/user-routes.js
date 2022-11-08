@@ -2,14 +2,14 @@
 // Express.js connection
 const router = require('express').Router();
 // User, Post, Vote models
-const { User, Post, Rating } = require('../../models');
+const { user, post, rating } = require('../../models');
 // Authorization Helper
-const authorize = require('../../utils/authorization');
+const authorize = require('../../utils/auth');
 
 // Routes
 // Get all users
 router.get('/', (req, res) => {
-    User.findAll({
+    user.findAll({
         attributes: { exclude: ['password'] }
     })
       .then(userData => res.json(userData))
@@ -21,19 +21,18 @@ router.get('/', (req, res) => {
 
 // GET user by id
 router.get('/:id', (req, res) => {
-    User.findOne({
+    user.findOne({
       attributes: { exclude: ['password'] },
       where: {
         id: req.params.id
       },
       include: [
         {
-          model: Post,
+          model: post,
           attributes: ['postID', 'postTitle', 'postDescription', 'postDateCreated']
         },
         {
-            model: Rating,
-            // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
+            model: rating,
             attributes: ['ratingID', 'rating', 'created_at'],
             include: {
                 model: Post,
@@ -57,7 +56,7 @@ router.get('/:id', (req, res) => {
 
 // Add a new user
 router.post('/', (req, res) => {
-  User.create({
+  user.create({
     userName: req.body.userName,
     userEmail: req.body.userEmail,
     userPassword: req.body.userPassword
@@ -73,7 +72,7 @@ router.post('/', (req, res) => {
 
 // Login route
 router.post('/login', (req, res) => {
-    User.findOne({
+    user.findOne({
         where: {
         email: req.body.userEmail
         }
@@ -104,7 +103,7 @@ router.post('/logout', authorize, (req, res) => {
 
 // Update an existing user
 router.put('/:id', authorize, (req, res) => {
-    User.update(req.body, {
+    user.update(req.body, {
         individualHooks: true,
         where: {
             id: req.params.id
@@ -125,7 +124,7 @@ router.put('/:id', authorize, (req, res) => {
 
 // Delete an existing user
 router.delete('/:id', authorize, (req, res) => {
-    User.destroy({
+    user.destroy({
       where: {
         id: req.params.id
       }

@@ -3,30 +3,27 @@ const router = require('express').Router();
 // Requires sequelize
 const sequelize = require('../config/connection');
 // Requires models
-const { Post, User, Comment } = require('../models');
+const { post, user, rating } = require('../models');
 
 // Get all posts
 router.get('/', (req, res) => {
-    Post.findAll({
+    post.findAll({
         attributes: [
-          'id',
+          'postID',
           'postTitle',
-          'postDateCreated',
-          'postLocation',
-          'postAvailable',
-          'postDog',
+          'postDescription',
           ],
         order: [[ 'created_at', 'DESC']],
         include: [
             {
-                model: User,
+                model: user,
                 attributes: ['userName']
             },
             {
-                model: Rating,
-                attributes: ['ratingId', 'rating'],
+                model: rating,
+                attributes: ['ratingID', 'rating'],
                 include: {
-                    model: User,
+                    model: user,
                     attributes: ['userName']
                 }
             }
@@ -52,23 +49,20 @@ router.get('/post/:id', (req, res) => {
         id: req.params.id
       },
       attributes: [
-        'id',
+        'postID',
         'postTitle',
-        'postDateCreated',
-        'postLocation',
-        'postAvailable',
-        'postDog',
+        'postDescription',
       ],
       include: [
         {
-          model: User,
+          model: user,
           attributes: ['userName']
         },
         {
-            model: Comment,
-            attributes: ['ratingId', 'rating'],
+            model: rating,
+            attributes: ['ratingID', 'rating'],
             include: {
-                model: User,
+                model: user,
                 attributes: ['userName']
             }
         }
@@ -79,8 +73,8 @@ router.get('/post/:id', (req, res) => {
           res.status(404).json({ message: 'No post found with id of ' + id });
           return;
         }
-        const post = postData.get({ plain: true });
-        res.render('single-post', {post});
+        const singlePost = postData.get({ plain: true });
+        res.render('single-post', {singlePost});
       })
       .catch(err => {
         console.log(err);

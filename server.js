@@ -1,57 +1,40 @@
-<<<<<<< HEAD
-const path = require("path");
-const express = require("express");
-const session = require("express-session");
-const exphbs = require("express-handlebars");
-=======
-const path = require('path');
-const express = require('express');
-const session = require('express-session');
-const exphbs = require('express-handlebars');
->>>>>>> Utils/Auth
+// Server for MVC Tech Blog
 
+// Requires path module
+const path = require('path');
+// Requires dotenv for sensitive info
+require('dotenv').config();
+// Requires express
+const express = require('express');
+// Requires controllers and all the routes in the folder
+const routes = require('./controllers/');
+// Requires sequelize to connect to the database
+const sequelize = require('./config/connection');
+// Handlebars helpers
+const helpers = require('./utils/helpers');
+// Express session to handle session cookies
+const session = require('express-session')
+// Sequelize store to save the session so the user can remain logged in
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+// Handlebars template engine for front-end
+const expressHandlebars = require('express-handlebars')
+// Initialize handlebars for the html templates
+const exphbs = expressHandlebars.create({helpers});
+
+// Initialize the server
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-<<<<<<< HEAD
-// const sequelize = require("./config/connection");
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-// const sess = {
-//   secret: "Super secret secret",
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-// };
-
-// app.use(session(sess));
-
-const helpers = require("./utils/helpers");
-
-const hbs = exphbs.create({ helpers });
-
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(require("./controllers/"));
-
-//sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
-//});
-=======
-const sequelize = require("./config/connection");
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+// Initialize sessions
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
+  // TEAM: FOR YOUR LOCAL TESTING, CREATE A .ENV FILE WITH
+  // DB_NAME: pawpals (create this with mysql line first)
+  // DB_USER: MySQL Username
+  // DB_PW: MySQL Password
+  // DB_SESSION_SECRET: this can be literally anything
+  secret: process.env.DB_SESSION_SECRET,
+  cookie: { maxAge: 7200000 },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -59,22 +42,24 @@ const sess = {
   })
 };
 
-app.use(session(sess));
-
-// const helpers = require('./utils/helpers');
-
-// const hbs = exphbs.create({ helpers });
-
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Give the server a path to the public directory for static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(require('./controllers/'));
+// Set handlebars as the template engine for the server
+app.engine('handlebars', exphbs.engine);
+app.set('view engine', 'handlebars');
 
+// Use express to part JSON and strings
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Tell the app to use Express Session for the session handling
+app.use(session(sess));
+
+// Give the server the path to the routes
+app.use(routes);
+
+// Sets up connection to server, listens on selected port
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
->>>>>>> Utils/Auth
+    app.listen(PORT, () => console.log('Now listening on PORT: ' + PORT));
+  });
