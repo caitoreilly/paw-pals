@@ -41,6 +41,8 @@ const sess = {
     db: sequelize
   })
 };
+// Tell the app to use Express Session for the session handling
+app.use(session(sess));
 
 // Give the server a path to the public directory for static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,9 +54,6 @@ app.set('view engine', 'handlebars');
 // Use express to part JSON and strings
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Tell the app to use Express Session for the session handling
-app.use(session(sess));
 
 // Give the server the path to the routes
 app.use(routes);

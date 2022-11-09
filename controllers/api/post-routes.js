@@ -14,7 +14,7 @@ const authorize = require('../../utils/auth');
 router.get('/', (req, res) => {
     post.findAll({
         attributes: [
-          'postID',
+          'id',
           'postTitle',
           'postDescription',
           ],
@@ -22,16 +22,12 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: user,
-                attributes: ['userName']
+                attributes: ['username']
             },
             {
               model: rating,
               // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
-              attributes: ['ratingID', 'rating', 'created_at'],
-              include: {
-                  model: post,
-                  attributes: ['title']
-              }
+              attributes: ['id', 'rating', 'created_at'],
           }
         ]
     })
@@ -49,29 +45,25 @@ router.get('/:id', (req, res) => {
         id: req.params.id
       },
       attributes: [
-        'postID',
+        'id',
         'postTitle',
         'postDescription',
       ],
       include: [
         {
           model: user,
-          attributes: ['userName']
+          attributes: ['username']
         },
         {
           model: rating,
           // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR RATING MODEL
-          attributes: ['ratingID', 'rating', 'created_at'],
-          include: {
-              model: post,
-              attributes: ['title']
-          }
+          attributes: ['id', 'rating', 'created_at'],
       }
       ]
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
+          res.status(404).json({ message: 'No post found with this id' });
           return;
         }
         res.json(postData);
@@ -87,7 +79,7 @@ router.post('/', authorize, (req, res) => {
     post.create({
         postTitle: req.body.postTitle,
         postDescription: req.body.postDescription,
-        postDog: req.postDog
+        userId: req.session.user_id
     })
     .then(postData => res.json(postData))
     .catch(err => {
@@ -107,7 +99,7 @@ router.put('/:id', authorize, (req, res) => {
     )
     .then(postData => {
         if (!postData) {
-            res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
+            res.status(404).json({ message: 'No post found with an id of ' + postData.id });
             return;
         }
         res.json(postData);
@@ -127,7 +119,7 @@ router.delete('/:id', authorize, (req, res) => {
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
+          res.status(404).json({ message: 'No post found with an id of ' + postData.id });
           return;
         }
         res.json(postData);

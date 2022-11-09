@@ -8,7 +8,7 @@ class post extends Model {}
 post.init(
     // auto
     {
-      postID: {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -41,14 +41,14 @@ post.init(
       //  } 
      // },
       // posted by what user -> ref. form name
-     // postDog: {
-       // type: DataTypes.STRING,
-       // allowNull: false,
-       // references: {
-        //  model: 'user',
-        //  key: 'name'
-       // }
-     // }
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+        model: 'user',
+        key: 'id'
+       }
+     }
     },
     {
       sequelize,

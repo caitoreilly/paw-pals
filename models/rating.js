@@ -8,7 +8,7 @@ class rating extends Model {}
 rating.init(
     // auto
     {
-      ratingID: {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -18,8 +18,23 @@ rating.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
+        },
+      postId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+        model: 'post',
+        key: 'id'
         }
       },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+        model: 'user',
+        key: 'id'
+        }
+      }},
     {
       sequelize,
       freezeTableName: true,

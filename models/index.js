@@ -7,23 +7,33 @@ const rating = require('./rating');
 
 // Post belongs to the user's Name (NOT THE USERNAME)
 post.belongsTo(user, {
-    foreignKey: 'ID'
+    foreignKey: 'userId' //userId is in post model
   });
 
 // User can have many posts
-user.hasMany(post, {
-    foreignKey: 'postID'
+user.hasOne(post, {
+   foreignKey: 'userId' // userId is in the post model
 });
 
 // Post can have many ratings
 post.hasMany(rating, {
-    foreignKey: 'ratingID'
+  foreignKey: 'postId'  // postId is in rating model
+});
+
+// Rating belongs to the user posting it
+rating.belongsTo(post, {
+  foreignKey: 'postId'
+});
+
+// Post can have many ratings
+user.hasMany(rating, {
+  foreignKey: 'userId'  // postId is in rating model
 });
 
 // Rating belongs to the user posting it
 rating.belongsTo(user, {
-    foreignKey: 'ID'
-  });
+  foreignKey: 'userId'
+});
 
 // Exported
 module.exports = { user, post, rating };

@@ -1,7 +1,7 @@
 // A function to edit a post
 async function editFormHandler(event) {
     event.preventDefault();
-    const postID = window.location.toString().split('/')[
+    const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
  // Will defer to Caitlyn's naming conventions for query selectors for updating post handlebars, if applicable
@@ -10,7 +10,7 @@ async function editFormHandler(event) {
     const postLocation = document.querySelector('input[name="post-loc"]').value;
     const postAvailable = document.querySelector('input[name="post-available"]').value;
 
-    const response = await fetch(`/api/posts/${postID}`, {
+    const response = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
           postTitle,

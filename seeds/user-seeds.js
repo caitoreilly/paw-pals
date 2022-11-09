@@ -2,6 +2,7 @@ const { user } = require('../models');
 
 const userData = [
   {
+    id: 1,
     username: 'user1',
     password: 'password1',
     name: 'name1',
@@ -14,6 +15,7 @@ const userData = [
     dogActivity: 'WALK',
   },
   {
+    id: 2,
     username: 'user2',
     password: 'password2',
     name: 'name2',
@@ -26,6 +28,7 @@ const userData = [
     dogActivity: 'FRISBEE',
   },
   {
+    id: 3,
     username: 'user3',
     password: 'password3',
     name: 'name3',

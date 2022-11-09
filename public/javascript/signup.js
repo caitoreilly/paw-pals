@@ -30,7 +30,7 @@ async function signupFormHandler(event) {
     });
         if (response.ok) {
             alert('Account created! Click okay to log in.');
-            document.location.replace('/dashboard');
+            document.location.replace('/login');
         } else {
             alert(response.statusText)
         }

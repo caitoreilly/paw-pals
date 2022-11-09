@@ -21,11 +21,13 @@ router.get('/', (req, res) => {
 // Post a new rating
 router.post('/', authorize, (req, res) => {
     rating.create({
-      rating_id: req.body.ratingID,
+      id: req.body.id,
       rating: req.body.rating,
+      userId: req.body.userId
     })
       .then(ratingData => res.json(ratingData))
       .catch(err => {
+        console.log("error!")
         console.log(err);
         res.status(400).json(err);
       });

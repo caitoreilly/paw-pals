@@ -10,32 +10,24 @@ const authorize = require('../utils/auth')
 
 // Renders dashboard page
 router.get('/', authorize, (req, res) => {
-    post.findAll({
+  console.log("++++++++++++++++++++++++++");
+  console.log(req.session.user_id);
+    user.findOne({
       where: {
-        postID: req.session.postID
+        id: req.session.user_id
       },
-      attributes: [
-        'postID',
-        'postTitle',
-        'postDescription',
-      ],
       include: [
         {
           model: rating,
-          attributes: ['ratingID', 'rating'],
-          include: {
-            model: user,
-            attributes: ['username']
-          }
+          attributes: ['id', 'rating'],
         },
         {
-          model: user,
-          attributes: ['username']
+          model: post,
         }
       ]
     })
-      .then(postData => {
-        const dashboardPosts = postData.map(post => post.get({ plain: true }));
+      .then(userData => {
+        const dashboardPosts = userData.get({ plain: true });
         res.render('dashboard', { dashboardPosts, loggedIn: true });
       })
       .catch(err => {
@@ -48,17 +40,17 @@ router.get('/', authorize, (req, res) => {
 router.get('/edit/:id', authorize, (req, res) => {
   post.findOne({
     where: {
-      postID: req.params.postID
+      id: req.params.id
     },
     attributes: [
-      'postID',
+      'id',
       'postTitle',
       'postDescription',
     ],
     include: [
       {
         model: rating,
-        attributes: ['ratingID', 'rating'],
+        attributes: ['id', 'rating'],
         include: {
           model: user,
           attributes: ['username']
@@ -72,7 +64,7 @@ router.get('/edit/:id', authorize, (req, res) => {
   })
     .then(postData => {
       if (!postData) {
-        res.status(404).json({ message: 'No post found with an id of ' + postData.postID});
+        res.status(404).json({ message: 'No post found with an id of ' + postData.id});
         return;
       }
       const editPost = postData.get({ plain: true });

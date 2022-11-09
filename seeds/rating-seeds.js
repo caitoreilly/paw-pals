@@ -2,16 +2,22 @@ const { rating } = require('../models');
 
 const ratingData = [
   {
-    ratingID: 1,
+    id: 1,
     rating: 4,
+    postId: 1,
+    userId: 1
   },
   {
-    ratingID: 2,
+    id: 2,
     rating: 5,
+    postId:2,
+    userId: 2
   },
   {
-    ratingID: 3,
+    id: 3,
     rating: 3,
+    postId: 3,
+    userId: 3
   },
 ];
 

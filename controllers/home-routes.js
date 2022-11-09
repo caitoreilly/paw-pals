@@ -9,7 +9,7 @@ const { post, user, rating } = require('../models');
 router.get('/', (req, res) => {
     post.findAll({
         attributes: [
-          'postID',
+          'id',
           'postTitle',
           'postDescription',
           ],
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
             },
             {
                 model: rating,
-                attributes: ['ratingID', 'rating'],
+                attributes: ['id', 'rating'],
                 include: {
                     model: user,
                     attributes: ['username']
@@ -43,10 +43,10 @@ router.get('/', (req, res) => {
 });
 
 // Get a specific post
-router.get('/post/:ID', (req, res) => {
-    Post.findOne({
+router.get('/post/:id', (req, res) => {
+    post.findOne({
       where: {
-        postID: req.params.postID
+        id: req.params.id
       },
       attributes: [
         'postTitle',
@@ -59,7 +59,7 @@ router.get('/post/:ID', (req, res) => {
         },
         {
             model: rating,
-            attributes: ['ratingID', 'rating'],
+            attributes: ['id', 'rating'],
             include: {
                 model: user,
                 attributes: ['username']
@@ -69,7 +69,7 @@ router.get('/post/:ID', (req, res) => {
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with id of ' + postData.postID });
+          res.status(404).json({ message: 'No post found with id of ' + postData.id });
           return;
         }
         const singlePost = postData.get({ plain: true });
