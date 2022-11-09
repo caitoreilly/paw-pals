@@ -71,7 +71,7 @@ router.get('/:id', (req, res) => {
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with an id of ' + id });
+          res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
           return;
         }
         res.json(postData);
@@ -107,7 +107,7 @@ router.put('/:id', authorize, (req, res) => {
     )
     .then(postData => {
         if (!postData) {
-            res.status(404).json({ message: 'No post found with an id of ' + id });
+            res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
             return;
         }
         res.json(postData);
@@ -127,7 +127,7 @@ router.delete('/:id', authorize, (req, res) => {
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with an id of ' + id });
+          res.status(404).json({ message: 'No post found with an id of ' + postData.postID });
           return;
         }
         res.json(postData);

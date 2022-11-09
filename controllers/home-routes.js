@@ -69,7 +69,7 @@ router.get('/post/:ID', (req, res) => {
     })
       .then(postData => {
         if (!postData) {
-          res.status(404).json({ message: 'No post found with id of ' + id });
+          res.status(404).json({ message: 'No post found with id of ' + postData.postID });
           return;
         }
         const singlePost = postData.get({ plain: true });

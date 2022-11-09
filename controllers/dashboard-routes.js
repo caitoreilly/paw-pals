@@ -12,7 +12,7 @@ const authorize = require('../utils/auth')
 router.get('/', authorize, (req, res) => {
     post.findAll({
       where: {
-        ID: req.session.ID
+        postID: req.session.postID
       },
       attributes: [
         'postID',
@@ -21,7 +21,6 @@ router.get('/', authorize, (req, res) => {
       ],
       include: [
         {
-          // THESE MAY CHANGE DEPENDING ON WHAT BRIT POSTS FOR COMMENT MODEL
           model: rating,
           attributes: ['ratingID', 'rating'],
           include: {
@@ -49,7 +48,7 @@ router.get('/', authorize, (req, res) => {
 router.get('/edit/:id', authorize, (req, res) => {
   post.findOne({
     where: {
-      id: req.params.id
+      postID: req.params.postID
     },
     attributes: [
       'postID',
@@ -73,7 +72,7 @@ router.get('/edit/:id', authorize, (req, res) => {
   })
     .then(postData => {
       if (!postData) {
-        res.status(404).json({ message: 'No post found with an id of ' + id });
+        res.status(404).json({ message: 'No post found with an id of ' + postData.postID});
         return;
       }
       const editPost = postData.get({ plain: true });
