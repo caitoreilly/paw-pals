@@ -3,11 +3,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paw Pals</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css"> 
   </head>
   <body>
     <header>
-      <nav>
+       <!-- section with name of company and dog bone-->
+      <section class="welcome">
+        <div class="intro">
+          <img src="./assets/dogbone.png" height="75px" />
+          <h1 class="title">Paw Pals</h1>
+        </div>
+        <div>
+          <img class="mae" src="./assets/mae3.jpg" height="155px"/>
+        </div>
+        <nav>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/#sign-up">Sign Up</a></li>
@@ -17,12 +29,14 @@
           <li><a href="/login">Login</a></li>
         </ul>
       </nav>
+      </section>
+      
     </header>
     <main>
       {{{body}}}
     </main>
     <footer>
-      <h2>🐕 Made with love by Paw Pals.</h2>
+      <h2>🐕 Made with love by Paw Pals</h2>
       <div>
         &copy; 2022 Paw Pals, Inc.
       </div>
