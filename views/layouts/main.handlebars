@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paw Pals</title>
+    {{!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/> --}}
+    <link rel="stylesheet" href="/stylesheets/style.css"> 
+    <link rel="stylesheet" href="/stylesheets/styles.css"> 
+  </head>
+  <body>
+    <header>
+       <!-- section with name of company and dog bone-->
+      <section class="welcome">
+        <div class="intro">
+          <img src="./assets/dogbone.png" class="w-24" />
+          <h1 class="title">Paw Pals</h1>
+        </div>
+        <div>
+          <img class="mae w-24" src="./assets/mae3.jpg"/>
+        </div>
+        <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#sign-up">Sign Up</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </nav>
+      </section>
+      
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+    <footer>
+      <h2>🐕 Made with love by Paw Pals</h2>
+      <div>
+        &copy; 2022 Paw Pals, Inc.
+      </div>
+    </footer>
+    <!--Javascript file-->
+  <!--{{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}-->
+  </body>
+</html>
