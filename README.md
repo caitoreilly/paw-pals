@@ -54,6 +54,6 @@ Caitlyn O'Reilly, Co-Founder
   - Email: coreilly29@gmail.com 
 
 
-Vill Gladimar
+Vill Gladimar, Co-Founder
   - Github: [Gladi023](https://github.com/Gladi023)
   - Email: Gladimar.Villamil@gmail.com
