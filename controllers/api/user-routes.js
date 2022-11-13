@@ -102,10 +102,6 @@ router.post('/login', (req, res) => {
       userEmail: req.body.userEmail
     }
   }).then(userData => {
-<<<<<<< HEAD
-    console.log(userData.dataValues.id);
-=======
->>>>>>> Tailwind
     if (!userData) {
       res.status(400).json({ message: 'Email address not found.' });
       return;
