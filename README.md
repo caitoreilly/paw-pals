@@ -42,12 +42,18 @@ Future functionality includes:
 Daniel Papert, Co-Founder
   - Github: [dpapert1995](https://github.com/dpapert1995)
   - Email: dpapert@gmail.com
+
+
 Brit Sovic, Co Founder
   - Github: [bsovic23](https://github.com/bsovic23)
   - Email: bsovic23@gmail.com 
+
+
 Caitlyn O'Reilly, Co-Founder
-  - Github: [caitoreilly]https://github.com/caitoreilly
+  - Github: [caitoreilly](https://github.com/caitoreilly)
   - Email: coreilly29@gmail.com 
+
+
 Vill Gladimar
-  - Github: [Gladi023] https://github.com/Gladi023
+  - Github: [Gladi023](https://github.com/Gladi023)
   - Email: Gladimar.Villamil@gmail.com
