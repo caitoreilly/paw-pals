@@ -32,11 +32,11 @@ Future functionality includes:
 - Newsletter sign up functionality
 
 ## Screenshots:
-![](public/assets/Screenshot1.PNG)
-![](public/assets/Screenshot2.PNG)
-![](public/assets/Screenshot3.PNG)
-![](public/assets/Screenshot4.PNG)
-![](public/assets/Screenshot5.PNG)
+![](public/assets/Screenshot1.png)
+![](public/assets/Screenshot2.png)
+![](public/assets/Screenshot3.png)
+![](public/assets/Screenshot4.png)
+![](public/assets/Screenshot5.png)
 
 ## Collaborators:
 Daniel Papert, Co-Founder
