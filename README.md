@@ -1,7 +1,7 @@
 # Paw-Pals
 
 ## Project Description
-This app connects allows users to set up
+This app connects allows users to set up a profile for their dog and connect users in New York City to set up play times.
 
 ## Tools Used to Create This Project
 * JavaScript ES6
@@ -49,11 +49,11 @@ Brit Sovic, Co Founder
   - Email: bsovic23@gmail.com 
 
 
-Caitlyn O'Reilly, Co-Founder
+Caitlin O'Reilly, Co-Founder
   - Github: [caitoreilly](https://github.com/caitoreilly)
   - Email: coreilly29@gmail.com 
 
 
-Vill Gladimar, Co-Founder
+Gladimar Vill, Co-Founder
   - Github: [Gladi023](https://github.com/Gladi023)
   - Email: Gladimar.Villamil@gmail.com
